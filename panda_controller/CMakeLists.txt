@@ -13,7 +13,7 @@ find_package(rclpy REQUIRED)
 # find_package(<dependency> REQUIRED)
 
 install(
-  DIRECTORY config launch panda_controller # assuming urdf files are in the urdf directory
+  DIRECTORY  launch panda_controller # assuming urdf files are in the urdf directory
   DESTINATION share/${PROJECT_NAME} # install to share/my_robot_description
 )
 
