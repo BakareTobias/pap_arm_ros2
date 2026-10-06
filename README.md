@@ -31,7 +31,7 @@ Camera → Color Detection → TF Transform → MoveIt Planning → Pick and Pla
 1. Clone the repo
    ```bash
    git clone https://github.com/BakareTobias/pap_arm_ros2.git
-   cd pap_arm_ws/
+   cd pap_arm_ros2/
    ```
 2. Install dependencies:
    ```
