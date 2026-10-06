@@ -28,10 +28,12 @@ Camera → Color Detection → TF Transform → MoveIt Planning → Pick and Pla
 *_Docker is used to run the moveit setup assistant on ROS2 Humble in a containerized manner, due to a bug that causes the Jazzy version to crash spontaenously_
 
 ## Installation
-1. Clone the repo
+1. Clone the repo into a workspace 
    ```bash
+   mkdir pap_arm_ws
+   cd pap_arm_ws
    git clone https://github.com/BakareTobias/pap_arm_ros2.git
-   cd pap_arm_ros2/
+   mv pap_arm_ros2 src
    ```
 2. Install dependencies:
    ```
@@ -40,7 +42,7 @@ Camera → Color Detection → TF Transform → MoveIt Planning → Pick and Pla
    ```
 3. Build and source 
    ```
-   colcon build --symlink-install && source ~/.bashrc 
+   colcon build --symlink-install && source install/setup.bash
    ```
 
 ## Usage
