@@ -39,17 +39,22 @@ Camera → Color Detection → TF Transform → MoveIt Planning → Pick and Pla
    ```
    rosdep update
    rosdep install --from-paths src --ignore-src -r -y
+   sudo apt update
+   sudo apt install ros-jazzy-ros2-control ros-jazzy-ros2-controllers
+   source install/setup.bash
+
    ```
-3. Build and source 
+3. Export resource dependencies for gazebo rendering(replace 'tobi-ubuntu' with your user)
+   ```
+   echo 'export GZ_SIM_RESOURCE_PATH=/home/tobi-ubuntu/pap_arm_ws/src/panda_description/meshes:/home/tobi-ubuntu/pap_arm_ws/src/panda_description/models:/home/tobi-ubuntu/pap_arm_ws/src:$GZ_SIM_RESOURCE_PATH' >> ~/.bashrc
+   ```
+4. Build and source 
    ```
    colcon build --symlink-install 
    source install/setup.bash
    ```
-4. Export resource dependencies for gazebo rendering(replace 'tobi-ubuntu' with your user)
-   ```
-   export GZ_SIM_RESOURCE_PATH=/home/tobi-ubuntu/pap_arm_ws/src/panda_description/meshes:/home/tobi-ubuntu/pap_arm_ws/src/panda_description/models:/home/tobi-ubuntu/pap_arm_ws/src:$GZ_SIM_RESOURCE_PATH
 
-   ```
+
 
 ## Usage
 1. Visualize the robot in rviz
