@@ -100,7 +100,7 @@ Camera → Color Detection → TF Transform → MoveIt Planning → Pick and Pla
 5. Running the CV guided pick and place task: Running this activates a sequence where the robot picks up the three blocks on the table,
    and places them in the bin located behind the robot. By alternating between test_world.sdf & test_world_2.sdf, you can change the starting positions of the blocks 
       ```
-      ros2 run panda_vision color_detector
+      ros2 run my_robot_commander_cpp cv_pick_and_place 
       ``` 
       
 ## Images and Demos
