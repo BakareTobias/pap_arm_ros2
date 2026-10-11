@@ -43,8 +43,12 @@ Camera → Color Detection → TF Transform → MoveIt Planning → Pick and Pla
 3. Build and source 
    ```
    colcon build --symlink-install 
-   echo 'export GZ_SIM_RESOURCE_PATH=/path/to/workspace/src' >> ~/.bashrc
    source install/setup.bash
+   ```
+4. Export resource dependencies for gazebo rendering(replace 'tobi-ubuntu' with your user)
+   ```
+   export GZ_SIM_RESOURCE_PATH=/home/tobi-ubuntu/pap_arm_ws/src/panda_description/meshes:/home/tobi-ubuntu/pap_arm_ws/src/panda_description/models:/home/tobi-ubuntu/pap_arm_ws/src:$GZ_SIM_RESOURCE_PATH
+
    ```
 
 ## Usage
