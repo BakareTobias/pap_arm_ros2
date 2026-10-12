@@ -129,7 +129,7 @@ Camera → Color Detection → TF Transform → MoveIt Planning → Pick and Pla
 
 - /move_group parameter: bug in ROS2 where you can not set the use_sim_time parameter for move_group node in the launch files. setup in terminal using
    ```
-      ros2 param get /controller_manager use_sim_time
+      ros2 param get /move_group use_sim_time
       ros2 param set /move_group use_sim_time true
    ```
      
