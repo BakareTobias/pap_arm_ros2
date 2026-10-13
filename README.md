@@ -111,10 +111,19 @@ Camera → Color Detection → TF Transform → MoveIt Planning → Pick and Pla
 3. Demos of Computer-Guided Pick and Place
 
 ### Case 1: Boxes Lined Up
-<video src="https://github.com/user-attachments/assets/c5f0f07d-4c11-40d3-bc2f-964c911cf458" controls width="700"></video>
+
+
+https://github.com/user-attachments/assets/76c662e0-7a39-49e2-a156-263bb0bab71b
+
 
 ### Case 2: Boxes Disorganized
-<video src="https://github.com/user-attachments/assets/e6f4200a-7816-4acb-bbcb-9aea352ebb01" controls width="700"></video>
+
+
+https://github.com/user-attachments/assets/0011d544-3251-402c-8478-71e561630faf
+
+
+
+
 
 
 
@@ -125,7 +134,10 @@ Camera → Color Detection → TF Transform → MoveIt Planning → Pick and Pla
 - On loading simulation, sometimes controllers fail to spawn. Confirm active controllers using ``` ros2 control list_controllers ``` and activate the dead ones using:
    - ``` ros2 run controller_manager spawner arm_controller```   
    - ``` ros2 run controller_manager spawner gripper_controller```
-   - ``` ros2 run controller_manager spawner joint_state_broadcaster```
+   - ``` ros2 run contro
+
+
+ller_manager spawner joint_state_broadcaster```
 
 - /move_group parameter: bug in ROS2 where you can not set the use_sim_time parameter for move_group node in the launch files. setup in terminal using
    ```
