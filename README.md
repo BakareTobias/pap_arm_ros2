@@ -28,20 +28,33 @@ Camera → Color Detection → TF Transform → MoveIt Planning → Pick and Pla
 *_Docker is used to run the moveit setup assistant on ROS2 Humble in a containerized manner, due to a bug that causes the Jazzy version to crash spontaenously_
 
 ## Installation
-1. Clone the repo
+1. Clone the repo into a workspace 
    ```bash
+   mkdir pap_arm_ws
+   cd pap_arm_ws
    git clone https://github.com/BakareTobias/pap_arm_ros2.git
-   cd pap_arm_ros2/
+   mv pap_arm_ros2 src
    ```
 2. Install dependencies:
    ```
    rosdep update
    rosdep install --from-paths src --ignore-src -r -y
+   sudo apt update
+   sudo apt install ros-jazzy-ros2-control ros-jazzy-ros2-controllers
+   source install/setup.bash
+
    ```
-3. Build and source 
+3. Export resource dependencies for gazebo rendering(replace 'tobi-ubuntu' with your user)
    ```
-   colcon build --symlink-install && source ~/.bashrc 
+   echo 'export GZ_SIM_RESOURCE_PATH=/home/tobi-ubuntu/pap_arm_ws/src/panda_description/meshes:/home/tobi-ubuntu/pap_arm_ws/src/panda_description/models:/home/tobi-ubuntu/pap_arm_ws/src:$GZ_SIM_RESOURCE_PATH' >> ~/.bashrc
    ```
+4. Build and source 
+   ```
+   colcon build --symlink-install 
+   source install/setup.bash
+   ```
+
+
 
 ## Usage
 1. Visualize the robot in rviz
@@ -87,7 +100,7 @@ Camera → Color Detection → TF Transform → MoveIt Planning → Pick and Pla
 5. Running the CV guided pick and place task: Running this activates a sequence where the robot picks up the three blocks on the table,
    and places them in the bin located behind the robot. By alternating between test_world.sdf & test_world_2.sdf, you can change the starting positions of the blocks 
       ```
-      ros2 run panda_vision color_detector
+      ros2 run my_robot_commander_cpp cv_pick_and_place 
       ``` 
       
 ## Images and Demos
@@ -98,10 +111,19 @@ Camera → Color Detection → TF Transform → MoveIt Planning → Pick and Pla
 3. Demos of Computer-Guided Pick and Place
 
 ### Case 1: Boxes Lined Up
-<video src="https://github.com/user-attachments/assets/c5f0f07d-4c11-40d3-bc2f-964c911cf458" controls width="700"></video>
+
+
+https://github.com/user-attachments/assets/76c662e0-7a39-49e2-a156-263bb0bab71b
+
 
 ### Case 2: Boxes Disorganized
-<video src="https://github.com/user-attachments/assets/e6f4200a-7816-4acb-bbcb-9aea352ebb01" controls width="700"></video>
+
+
+https://github.com/user-attachments/assets/0011d544-3251-402c-8478-71e561630faf
+
+
+
+
 
 
 
@@ -112,16 +134,22 @@ Camera → Color Detection → TF Transform → MoveIt Planning → Pick and Pla
 - On loading simulation, sometimes controllers fail to spawn. Confirm active controllers using ``` ros2 control list_controllers ``` and activate the dead ones using:
    - ``` ros2 run controller_manager spawner arm_controller```   
    - ``` ros2 run controller_manager spawner gripper_controller```
-   - ``` ros2 run controller_manager spawner joint_state_broadcaster```
+   - ``` ros2 run contro
+
+
+ller_manager spawner joint_state_broadcaster```
 
 - /move_group parameter: bug in ROS2 where you can not set the use_sim_time parameter for move_group node in the launch files. setup in terminal using
-   -  ``` ros2 param set /move_group use_sim_time true```
+   ```
+      ros2 param get /move_group use_sim_time
+      ros2 param set /move_group use_sim_time true
+   ```
      
 - trajectory execution parameters: the allowed_execution_duration_scaling parameter ``` panda_moveit_config/config/moveit_controllers.yaml ``` is increased to compensate for my laptops slow processing speeds. 
 
 ## Acknoledgements
 Thanks to Edouard Renard, whose direct, well taught courses on ROS2 software concepts helped me start this project. Check out some of his courses here https://www.udemy.com/user/edouard-renard/
-Thanks also to Mechamind, whose repo I sourced the robot model from, and used as a guide for my own project
+
 
 
 
