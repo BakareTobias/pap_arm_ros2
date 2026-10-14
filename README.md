@@ -149,7 +149,7 @@ ller_manager spawner joint_state_broadcaster```
 
 ## Acknoledgements
 Thanks to Edouard Renard, whose direct, well taught courses on ROS2 software concepts helped me start this project. Check out some of his courses here https://www.udemy.com/user/edouard-renard/
-Thanks also to Mechamind, whose repo I sourced the robot model from, and used as a guide for my own project
+
 
 
 
