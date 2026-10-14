@@ -1,4 +1,11 @@
 <launch>
+    <!-- This conditional only runs the pick and place node if True. -->
+    <arg name="run_node" default="false" />
+
+    <node pkg="my_package"
+          exec="my_node"
+          name="my_node"
+          if="$(var run_node)" />
     <!-- 1. Launch Gazebo Simulation (via existing gazebo_launch.xml) -->
     <!-- This starts Gazebo, Robot State Publisher, and spawns the robot model with proper ros2_control configuration -->
     <include file="$(find-pkg-share panda_bringup)/launch/gazebo_launch.xml"/>
@@ -26,7 +33,7 @@
     <!-- <node pkg="my_robot_commander_cpp" exec="pick_and_place" output="screen"/> -->
 
     <!-- 7.  Start the CV guided Pick & Place Node-->
-    <node pkg="my_robot_commander_cpp" exec="cv_pick_and_place"/>
+    <node pkg="my_robot_commander_cpp" exec="cv_pick_and_place" if="$(var run_node)"/>
 
     <!-- 8. Start color detector node -->
     <node pkg="panda_vision" exec="color_detector"/>

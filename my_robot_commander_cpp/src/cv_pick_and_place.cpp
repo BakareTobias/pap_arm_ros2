@@ -168,6 +168,11 @@ class ColorCoordinates{
             gripper_->setNamedTarget("gripper_open");//set the named target
             planAndExecute(gripper_);
 
+            //robot to pre-pick
+            arm_->setStartStateToCurrentState();//set the start state to the current state
+            arm_->setNamedTarget("pre_pick");//set the named target
+            planAndExecute(arm_);
+
 
            
         }
